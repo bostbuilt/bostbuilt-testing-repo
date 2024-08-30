@@ -32,7 +32,7 @@ jobs:
         id: app-token
         with:
           # required
-          app-id: ${{ vars.CIDER_TESTING_APP_ID }}
+          app-id: ${{ vars.TESTING_VARIABLE }}
           private-key: ${{ secrets.GH_APP_CREDENTIALS_TOKEN }}
       - name: Get GitHub App User ID
         id: get-user-id
