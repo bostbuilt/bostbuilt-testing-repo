@@ -21,19 +21,19 @@ jobs:
     # Job steps
     steps:
       # Manual Checkout
-      - uses: actions/checkout@v4
+      # - uses: actions/checkout@v4
 
-      # Set up Node
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
+      # # Set up Node
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20.x'
 
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
           # required
           app-id: ${{ vars.CIDER_TESTING_APP_ID }}
-          private-key: ${{ secrets.GH_APP_CREDENTIALS_TOKEN_LOCAL_REPO }}
+          private-key: ${{ secrets.GH_APP_CREDENTIALS_TOKEN }}
       - name: Get GitHub App User ID
         id: get-user-id
         run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
